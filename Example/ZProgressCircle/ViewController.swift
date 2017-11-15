@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import ZProgressCircle
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+  
+  @IBOutlet weak var progressCircle: ProgressCircle!
+  @IBOutlet weak var stepper: UIStepper!
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    // Set stepper boundaries
+    self.stepper.minimumValue = 0
+    self.stepper.maximumValue = Double(self.progressCircle.totalCount)
+    self.stepper.stepValue = 1.0
+  }
+  
+  @IBAction func didPressStepper(_ sender: UIStepper) {
+    self.progressCircle.setCompletion(to: Int(self.stepper.value))
+  }
+  
 }
 

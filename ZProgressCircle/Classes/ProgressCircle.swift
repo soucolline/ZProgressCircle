@@ -21,7 +21,7 @@ open class ProgressCircle: UIView {
   var filledLayer: CAShapeLayer!
   
   fileprivate var _totalCount:Int = 10
-  @IBInspectable var totalCount:Int {
+  @IBInspectable public var totalCount:Int {
     get {
       return self._totalCount
     }
@@ -139,7 +139,7 @@ open class ProgressCircle: UIView {
   }
   
   // Set completion to desired value
-  internal func setCompletion(to value:Int) {
+  public func setCompletion(to value:Int) {
     guard value < self.totalCount else {
       self.completionCount = self.totalCount - 1;
       self.increment()
