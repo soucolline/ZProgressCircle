@@ -1,9 +1,9 @@
 //
-//  InventoryChip.swift
-//  inventory-chip
+//  ZProgressCircle.swift
+//  ZProgressCircle
 //
-//  Created by Thomas Guilleminot on 04/07/16.
-//  Copyright © 2016 Thomas Guilleminot. All rights reserved.
+//  Created by Zlatan on 15/11/17.
+//  Copyright © 2017 Thomas Guilleminot. All rights reserved.
 //
 import UIKit
 import Darwin
@@ -12,7 +12,7 @@ let pi: CGFloat = .pi
 let startAngle: CGFloat = (3.0 * pi) / 2.0
 
 @IBDesignable
-open class ProgressCircle: UIView {
+open class ZProgressCircle: UIView {
   
   var countLabel: UILabel!
   var containerView: UIView!
@@ -63,7 +63,7 @@ open class ProgressCircle: UIView {
       self.filledLayer.removeFromSuperlayer()
     }
     
-    let endAngle = ProgressCircle.percentToRadians(percentComplete)
+    let endAngle = ZProgressCircle.percentToRadians(percentComplete)
     context.setLineWidth(4.0)
     
     // Create fixed circle
@@ -184,7 +184,7 @@ open class ProgressCircle: UIView {
   }
 }
 
-extension ProgressCircle {
+extension ZProgressCircle {
   
   static func percentToRadians(_ percentComplete: CGFloat) -> CGFloat {
     let degrees = (percentComplete/100) * 360

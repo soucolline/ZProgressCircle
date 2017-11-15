@@ -11,7 +11,7 @@ import ZProgressCircle
 
 class ViewController: UIViewController {
   
-  @IBOutlet weak var progressCircle: ProgressCircle!
+  @IBOutlet weak var progressCircle: ZProgressCircle!
   @IBOutlet weak var stepper: UIStepper!
   
   override func viewDidLoad() {
