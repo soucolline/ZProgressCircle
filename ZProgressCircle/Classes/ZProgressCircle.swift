@@ -14,13 +14,13 @@ let startAngle: CGFloat = (3.0 * pi) / 2.0
 @IBDesignable
 open class ZProgressCircle: UIView {
   
-  var countLabel: UILabel!
-  var containerView: UIView!
-  var remainingCount: Int = 0
-  var isCompleted: Bool = false
-  var filledLayer: CAShapeLayer!
+  private var countLabel: UILabel!
+  private var containerView: UIView!
+  private var remainingCount: Int = 0
+  private var filledLayer: CAShapeLayer!
+  open var isCompleted: Bool = false
   
-  fileprivate var _totalCount: Int = 10
+  private var _totalCount: Int = 10
   @IBInspectable public var totalCount: Int {
     get {
       return self._totalCount
@@ -33,8 +33,8 @@ open class ZProgressCircle: UIView {
     }
   }
   
-  fileprivate var _completionCount: Int = 0
-  @IBInspectable var completionCount: Int {
+  private var _completionCount: Int = 0
+  @IBInspectable public var completionCount: Int {
     get {
       return self._completionCount
     }
@@ -63,7 +63,7 @@ open class ZProgressCircle: UIView {
       self.filledLayer.removeFromSuperlayer()
     }
     
-    let endAngle = ZProgressCircle.percentToRadians(percentComplete)
+    let endAngle = self.percentToRadians(percentComplete)
     context.setLineWidth(4.0)
     
     // Create fixed circle
@@ -112,7 +112,7 @@ open class ZProgressCircle: UIView {
   }
   
   // Animated circle
-  internal func runAnimation() {
+  private func runAnimation() {
     self.percentComplete = CGFloat(
       100 - (Double(remainingCount) / Double(totalCount) * 100))
     print("TOTAL COUNT : \(totalCount)")
@@ -123,7 +123,7 @@ open class ZProgressCircle: UIView {
   }
   
   // Remove 1 item to count
-  internal func increment() {
+  public func increment() {
     guard self.completionCount < totalCount
       else { return }
     
@@ -152,7 +152,7 @@ open class ZProgressCircle: UIView {
   }
   
   // Initialize label
-  internal func initialize() {
+  private func initialize() {
     self.countLabel = UILabel()
     self.countLabel.translatesAutoresizingMaskIntoConstraints = false
     self.countLabel.adjustsFontSizeToFitWidth = true
@@ -185,6 +185,11 @@ open class ZProgressCircle: UIView {
     self.countLabel.text = String(_totalCount)
   }
   
+  private func percentToRadians(_ percentComplete: CGFloat) -> CGFloat {
+    let degrees = (percentComplete/100) * 360
+    return startAngle + (degrees * (pi/180))
+  }
+  
   required public init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.initialize()
@@ -194,13 +199,4 @@ open class ZProgressCircle: UIView {
     super.init(frame: frame)
     self.initialize()
   }
-}
-
-extension ZProgressCircle {
-  
-  static func percentToRadians(_ percentComplete: CGFloat) -> CGFloat {
-    let degrees = (percentComplete/100) * 360
-    return startAngle + (degrees * (pi/180))
-  }
-  
 }
