@@ -28,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DE84911A9DB1E4D4A37EDB5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		0DE84911A9DB1E4D4A37EDB5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		1BF3504516D0E78696B0953F /* Pods-ZProgressCircle_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZProgressCircle_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZProgressCircle_Tests/Pods-ZProgressCircle_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		47972EBAD246DD4B813C169D /* Pods_ZProgressCircle_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZProgressCircle_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		538DB22D51879469AAF55F29 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		538DB22D51879469AAF55F29 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* ZProgressCircle_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZProgressCircle_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		90DAAD47A555DA8A2E506F1D /* Pods-ZProgressCircle_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZProgressCircle_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZProgressCircle_Example/Pods-ZProgressCircle_Example.release.xcconfig"; sourceTree = "<group>"; };
-		BC998D3484332C4BAC28C02C /* ZProgressCircle.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ZProgressCircle.podspec; path = ../ZProgressCircle.podspec; sourceTree = "<group>"; };
+		BC998D3484332C4BAC28C02C /* ZProgressCircle.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZProgressCircle.podspec; path = ../ZProgressCircle.podspec; sourceTree = "<group>"; };
 		CBF7FDAFA1966911A77D9992 /* Pods_ZProgressCircle_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZProgressCircle_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7DD173F3046E7CE65E0D78 /* Pods-ZProgressCircle_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZProgressCircle_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ZProgressCircle_Example/Pods-ZProgressCircle_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F8841A8D666916AC6F121E89 /* Pods-ZProgressCircle_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZProgressCircle_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ZProgressCircle_Tests/Pods-ZProgressCircle_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +172,7 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				964E533C88722327CE8E5F46 /* [CP] Embed Pods Frameworks */,
 				0B8AC0656D05509C9CB07201 /* [CP] Copy Pods Resources */,
+				EB7C54B81FBC7D28005C0311 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -367,6 +368,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ZProgressCircle_Tests/Pods-ZProgressCircle_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		EB7C54B81FBC7D28005C0311 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

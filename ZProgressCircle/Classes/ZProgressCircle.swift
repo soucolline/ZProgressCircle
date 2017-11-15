@@ -20,8 +20,8 @@ open class ZProgressCircle: UIView {
   var isCompleted: Bool = false
   var filledLayer: CAShapeLayer!
   
-  fileprivate var _totalCount:Int = 10
-  @IBInspectable public var totalCount:Int {
+  fileprivate var _totalCount: Int = 10
+  @IBInspectable public var totalCount: Int {
     get {
       return self._totalCount
     }
@@ -47,9 +47,9 @@ open class ZProgressCircle: UIView {
   }
   
   @IBInspectable var percentComplete: CGFloat = 0
-  @IBInspectable var completeColor:UIColor = UIColor.fromRGB(rgbValue: 0x96E5B8)
-  @IBInspectable var originalColor:UIColor = UIColor.fromRGB(rgbValue: 0x3498db)
-  @IBInspectable var fillingColor:UIColor = UIColor.fromRGB(rgbValue: 0x2ECC71)
+  @IBInspectable var completeColor: UIColor = UIColor.fromRGB(rgbValue: 0x96E5B8)
+  @IBInspectable var originalColor: UIColor = UIColor.fromRGB(rgbValue: 0x3498db)
+  @IBInspectable var fillingColor: UIColor = UIColor.fromRGB(rgbValue: 0x2ECC71)
   
   override open func draw(_ rect: CGRect) {
     super.draw(rect)
@@ -67,7 +67,7 @@ open class ZProgressCircle: UIView {
     context.setLineWidth(4.0)
     
     // Create fixed circle
-    let rectangle = CGRect(x: 0,y: 0,width: rect.size.width,height: rect.size.height)
+    let rectangle = CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height)
     context.setFillColor(originalColor.cgColor)
     context.addEllipse(in: rectangle)
     context.fillEllipse(in: rectangle)
@@ -139,14 +139,14 @@ open class ZProgressCircle: UIView {
   }
   
   // Set completion to desired value
-  public func setCompletion(to value:Int) {
+  public func setCompletion(to value: Int) {
     guard value < self.totalCount else {
-      self.completionCount = self.totalCount - 1;
+      self.completionCount = self.totalCount - 1
       self.increment()
       return
     }
     
-    self.completionCount = value;
+    self.completionCount = value
     self.countLabel.text = String(value > 0 ? value : self.totalCount)
     self.runAnimation()
   }
@@ -164,9 +164,21 @@ open class ZProgressCircle: UIView {
     self.addSubview(countLabel)
     
     // countLabel edges to 0
-    self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": countLabel]));
+    self.addConstraints(
+      NSLayoutConstraint.constraints(
+        withVisualFormat: "H:|-0-[view]-0-|",
+        options: NSLayoutFormatOptions(rawValue: 0),
+        metrics: nil,
+        views: ["view": countLabel])
+    )
     
-    self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": countLabel]));
+    self.addConstraints(
+      NSLayoutConstraint.constraints(
+        withVisualFormat: "V:|-0-[view]-0-|",
+        options: NSLayoutFormatOptions(rawValue: 0),
+        metrics: nil,
+        views: ["view": countLabel])
+    )
     
     self.percentComplete = 0
     self._totalCount = self.totalCount
