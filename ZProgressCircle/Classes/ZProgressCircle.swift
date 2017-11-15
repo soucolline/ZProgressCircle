@@ -91,8 +91,8 @@ open class ZProgressCircle: UIView {
     self.filledLayer.fillColor = fillingColor.cgColor
     self.filledLayer.frame.size.height = rectangle.size.height / 2
     
-    self.containerView?.layer.sublayers?.first?.removeFromSuperlayer()
-    self.containerView?.removeFromSuperview()
+    self.containerView.layer.sublayers?.first?.removeFromSuperlayer()
+    self.containerView.removeFromSuperview()
     self.containerView = UIView(frame: rect)
     self.containerView.layer.addSublayer(filledLayer)
     
