@@ -46,8 +46,10 @@ class ZProgressCircleTests: QuickSpec {
         expect(self.progressCircle.isCompleted).to(beTrue())
       }
       
-      
-      // TODO guard against completion count < 0
+      it("should do nothing if setCompletion value < 0") {
+        self.progressCircle.setCompletion(to: -2)
+        expect(self.progressCircle.completionCount) == 0
+      }
     }
   }
 }
