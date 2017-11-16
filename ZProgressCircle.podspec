@@ -1,24 +1,11 @@
-#
-# Be sure to run `pod lib lint ZProgressCircle.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'ZProgressCircle'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ZProgressCircle.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.version          = '1.0.0'
+  s.summary          = 'Light, well-designed and easy to use progress circle for iOS apps'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Light, well-designed and easy to use progress circle for iOS apps
+As simple as a drag and drop in the storyboard
                        DESC
 
   s.homepage         = 'https://github.com/soucolline/ZProgressCircle'
@@ -26,9 +13,9 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'soucolline' => 'guilleminot.thomas@gmail.com' }
   s.source           = { :git => 'https://github.com/soucolline/ZProgressCircle.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/mrsoucolline'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'ZProgressCircle/Classes/**/*'
   
