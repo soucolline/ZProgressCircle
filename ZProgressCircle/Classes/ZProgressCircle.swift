@@ -15,33 +15,22 @@ let startAngle: CGFloat = (3.0 * pi) / 2.0
 open class ZProgressCircle: UIView {
   
   private var countLabel: UILabel!
-  private var containerView: UIView!
+  private var containerView = UIView()
   private var remainingCount: Int = 0
   private var filledLayer: CAShapeLayer!
   open var isCompleted: Bool = false
   
-  private var _totalCount: Int = 10
-  @IBInspectable public var totalCount: Int {
-    get {
-      return self._totalCount
-    }
-    
-    set (newValue) {
-      self._totalCount = newValue
-      self.countLabel.text = String(_totalCount)
+  @IBInspectable public private(set) var totalCount: Int = 10 {
+    willSet (newValue) {
+      self.countLabel.text = String(newValue)
       self.setNeedsDisplay()
     }
   }
   
-  private var _completionCount: Int = 0
-  @IBInspectable public var completionCount: Int {
-    get {
-      return self._completionCount
-    }
-    
-    set (newValue) {
-      self._completionCount = newValue
+  @IBInspectable public private(set) var completionCount: Int = 0 {
+    willSet (newValue) {
       self.remainingCount = self.totalCount - newValue
+      self.isCompleted = self.totalCount - newValue == 0 ? true : false
       self.setNeedsDisplay()
     }
   }
@@ -146,6 +135,8 @@ open class ZProgressCircle: UIView {
       return
     }
     
+    guard value >= 0 else { return }
+    
     self.completionCount = value
     self.countLabel.text = String(value > 0 ? value : self.totalCount)
     self.runAnimation()
@@ -181,8 +172,7 @@ open class ZProgressCircle: UIView {
     )
     
     self.percentComplete = 0
-    self._totalCount = self.totalCount
-    self.countLabel.text = String(_totalCount)
+    self.countLabel.text = String(self.totalCount)
   }
   
   private func percentToRadians(_ percentComplete: CGFloat) -> CGFloat {
